@@ -1,0 +1,182 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "date_format": "YYYY-MM-DD, using 2016 for April-December and 2017 for January-March. The in-game weekdays match the real 2016-2017 calendar, so Python's datetime can compute weekdays and dates sort correctly.",
+    "conventions": {
+      "null": "Unknown / still to research (see each confidant's 'todo' list).",
+      "available_after": "The rank can only happen strictly after this date.",
+      "time": "One of: 'day', 'night'."
+    },
+    "assumptions": [
+      "Exam-score multipliers are ignored for now.",
+      "Optional hangouts that do not give rank-ups are ignored for now."
+    ],
+    "calendar_notes": [
+      "9/6: last chance to grab a Persona before the school trip; the Velvet Room is inaccessible on the trip. Move this to the calendar file later."
+    ]
+  },
+  "confidants": [
+    {
+      "id": "akechi",
+      "name": "Goro Akechi",
+      "arcana": "Justice",
+      "max_rank": 10,
+      "romanceable": false,
+      "unlock": {
+        "date": "2016-06-10",
+        "condition": "Story event; rank 1 is automatic."
+      },
+      "availability": [
+        {
+          "label": "default",
+          "from": "2016-06-10",
+          "to": null,
+          "days": ["Wed", "Sat"],
+          "time": ["night"],
+          "location": "Penguin Sniper (Kichijoji)"
+        },
+        {
+          "label": "summer schedule",
+          "from": null,
+          "to": null,
+          "approx": "mid-July to end of August (your notes said mid-June: verify)",
+          "days": ["Tue", "Sat"],
+          "time": ["night"],
+          "location": "Penguin Sniper (Kichijoji)"
+        }
+      ],
+      "rank_rules": [
+        { "rank": 1, "auto": true, "note": "Unlocked by the story on 6/10." },
+        { "rank": 6, "location": "LeBlanc" },
+        { "rank": 9, "auto": true, "note": "Story-driven, if rank 8 was reached by the deadline. Source: RPG Site guide; verify." },
+        { "rank": 10, "auto": true, "note": "Story-driven, if rank 8 was reached by the deadline. Source: RPG Site guide; verify." }
+      ],
+      "deadlines": [
+        { "type": "must_reach", "rank": 8, "by": "2016-11-17", "consequence": "Required for the third semester." }
+      ],
+      "fixed_events": [],
+      "stat_requirements": null,
+      "modifiers": [
+        { "type": "exam_rank", "condition": "1st in school", "multiplier": 1.5, "in_scope": false },
+        { "type": "exam_rank", "condition": "top 10 in school", "multiplier": 1.2, "in_scope": false }
+      ],
+      "sources": [],
+      "todo": [
+        "Exact start and end dates of the summer schedule",
+        "Any social stat requirements?",
+        "Add source links"
+      ]
+    },
+    {
+      "id": "ryuji",
+      "name": "Ryuji Sakamoto",
+      "arcana": "Chariot",
+      "max_rank": 10,
+      "romanceable": false,
+      "unlock": {
+        "date": null,
+        "condition": "Story event during the second visit to Kamoshida's castle."
+      },
+      "availability": [
+        {
+          "label": "school days",
+          "from": null,
+          "to": null,
+          "days": null,
+          "time": null,
+          "location": "Shujin Academy, 2nd floor stairwell"
+        },
+        {
+          "label": "days without school",
+          "from": null,
+          "to": null,
+          "days": null,
+          "time": null,
+          "location": "Shibuya arcade"
+        }
+      ],
+      "rank_rules": [
+        { "rank": 5, "available_after": "2016-05-06", "note": "Locked until the Kamoshida arc is finished." },
+        { "rank": 7, "fixed_events_only": true, "location": "Tsukishima", "note": "Only via Ryuji's stakeout text; see fixed_events." }
+      ],
+      "deadlines": [],
+      "fixed_events": [
+        {
+          "rank": 7,
+          "trigger": "Ryuji texts about a stakeout; agree to go.",
+          "dates": [
+            "2016-04-20", "2016-04-25", "2016-04-27",
+            "2016-05-18", "2016-05-25", "2016-05-27",
+            "2016-06-22", "2016-06-29",
+            "2016-07-01", "2016-07-06",
+            "2016-08-12", "2016-08-17",
+            "2016-09-21",
+            "2016-10-02",
+            "2016-11-02", "2016-11-04", "2016-11-09", "2016-11-11", "2016-11-16", "2016-11-30",
+            "2016-12-02", "2016-12-07", "2016-12-09",
+            "2017-01-13"
+          ]
+        }
+      ],
+      "stat_requirements": null,
+      "modifiers": [],
+      "sources": [],
+      "todo": [
+        "Exact unlock date",
+        "Which days of the week and which time (day/night) he is available",
+        "Confirm there is no deadline",
+        "Any social stat requirements?",
+        "Add source links"
+      ]
+    },
+    {
+      "id": "kawakami",
+      "name": "Sadayo Kawakami",
+      "arcana": "Temperance",
+      "max_rank": 10,
+      "romanceable": true,
+      "unlock": {
+        "date": "2016-05-24",
+        "condition": "Night plans with Ryuji and Mishima, two days after Madarame's Palace is finished, any time after 5/24. Check which of the two conditions sets the real earliest date."
+      },
+      "availability": [
+        {
+          "label": "default",
+          "from": "2016-05-24",
+          "to": null,
+          "days": ["Fri", "Sat"],
+          "time": ["night"],
+          "location": "LeBlanc (call her with the yellow phone on the counter)"
+        }
+      ],
+      "rank_rules": [
+        { "rank": 8, "school_nights_only": true, "note": "Part two happens the next day at school and does not use free time. Gives the Mementos request 'A Teacher Maid to Suffer'." },
+        { "rank": 9, "school_days_only": true, "requires": ["mementos_request:A Teacher Maid to Suffer"], "note": "Per your notes, she only calls afterwards if you chose to stay friends: verify what this means." }
+      ],
+      "deadlines": [
+        { "type": "locked", "from": "2016-11-17", "until": null, "until_approx": "early January 2017", "consequence": "Unavailable for story reasons, then available again." }
+      ],
+      "fixed_events": [],
+      "stat_requirements": null,
+      "modifiers": [],
+      "hangout_spots": {
+        "in_scope": false,
+        "note": "Optional hangouts; check whether these give any points.",
+        "spots": [
+          { "location": "Ueno Museum", "condition": null },
+          { "location": "Buffet (Shibuya)", "condition": "stayed friends" },
+          { "location": "Ferris wheel (Odaiba)", "condition": "dating" },
+          { "location": "LeBlanc attic", "condition": "dating" }
+        ]
+      },
+      "sources": [],
+      "todo": [
+        "Exact date she becomes available again in January",
+        "Check which unlock condition sets the real earliest date",
+        "Clarify the rank 9 'stay friends' condition",
+        "Any social stat requirements?",
+        "Add source links"
+      ]
+    }
+  ]
+}
